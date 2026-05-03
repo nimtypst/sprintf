@@ -6,5 +6,12 @@
 #let theme = sys.inputs.at("theme", default: "light")
 #set text(white) if theme == "dark"
 
-#set text(22pt)
-#align(center)[_a thumbnail showing the package's output_]
+#align(center)[
+	#block(inset: 8pt, stroke: (paint: rgb("9aa0a6"), thickness: 0.5pt), radius: 5pt)[
+		#let txt = text(10pt, fill: color.gray)[
+        ```typst sprintf("%s | %06d | %.2f%%", "item", 42, 7.5)```]
+    #context[#txt #line(length: measure(txt).width)]
+    #v(5pt)
+		#text(15pt)[#sprintf("%s | %06d | %.2f%%", "item", 42, 7.5)]
+	]
+]

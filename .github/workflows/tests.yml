@@ -4,7 +4,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+env:
+  nim-version: 'stable'
 jobs:
   tests:
     strategy:
@@ -45,6 +46,14 @@ jobs:
         uses: typst-community/setup-tytanic@v1
         with:
           tytanic-version: ${{ matrix.typst-version.tytanic }}
+
+      - name: Setup plugin compiler
+        uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ env.nim-version }}
+      
+      - name: Compile plugin
+        run: env -C lib nimble buildTypst
 
       - name: Run test suite
         run: just test

@@ -32,7 +32,7 @@ Then, compile plugin via:
 
 ```shell
 $ cd lib
-$ nimble buildTypst
+$ nimble run
 $ cd ..
 ```
 

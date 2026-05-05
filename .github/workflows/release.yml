@@ -19,7 +19,7 @@ env:
   # the path within the registry repo where the "<name>/<version>" directory should be put
   # for Universe, this is packages/preview
   PATH_PREFIX: packages/preview
-  nim-version: 'stable'
+  nim-version: '2.2.8'
 
 jobs:
   build:
@@ -45,9 +45,15 @@ jobs:
         uses: jiro4989/setup-nim-action@v2
         with:
           nim-version: ${{ env.nim-version }}
+          # must cannot use default value, otherwise `Create archives` step will include `nim` directory
+          parent-nim-install-directory: ${{ runner.temp }}
+
+      - name: setup wasi sdk
+        uses: konsumer/install-wasi-sdk@v1
       
       - name: Compile plugin
-        run: env -C lib nimble buildTypst
+        run: env -C lib nimble run
+        # remember to force-add generated files under `src/` during `Release` step
 
       - name: Determine and check package metadata
         run: |
@@ -134,6 +140,7 @@ jobs:
           git config user.email "${GIT_USER_EMAIL}"
           git checkout -b "${PKG_ID}"
           git add .
+          git add -f "${PATH_PREFIX}/${PKG_NAME}/${PKG_VERSION}/src"
           git commit -m "${PKG_NAME}:${PKG_VERSION}"
 
       - name: Push package release to the fork

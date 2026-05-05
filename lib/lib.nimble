@@ -5,6 +5,7 @@ author        = "litlighilit"
 description   = "src of typst plugin"
 license       = "MIT"
 srcDir        = "."
+bin           = @["lib/main"]  # use `nimble run` to build typst plugin
 
 
 # Dependencies
@@ -21,13 +22,4 @@ template pylib(x, ver) =
            else: pylibPre & x
 
 pylib "pyformats", " ^= 0.1.0"
-pylib "wasm_minimal_protocol", " ^= 0.1.3"
-
-from std/os import `/`
-task buildTypst, "build typst plugin":
-  const typSrc = "../src"
-  exec"nim-typst-plugin lib.nim"
-  template mv2d(f, d) =
-    mvFile f, d/f
-  mv2d "lib.typ", typSrc
-  mv2d "lib.wasm", typSrc
+pylib "wasm-minimal-protocol", " ^= 0.1.3"

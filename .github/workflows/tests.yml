@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-  nim-version: 'stable'
+  nim-version: '2.2.8'
 jobs:
   tests:
     strategy:
@@ -14,8 +14,6 @@ jobs:
       matrix:
         # add any other Typst versions that your package should support
         typst-version:
-          - typst: 0.12
-            tytanic: 0.1
           - typst: 0.13
             tytanic: 0.2
           - typst: 0.14
@@ -52,8 +50,11 @@ jobs:
         with:
           nim-version: ${{ env.nim-version }}
       
+      - name: setup wasi sdk
+        uses: konsumer/install-wasi-sdk@v1
+
       - name: Compile plugin
-        run: env -C lib nimble buildTypst
+        run: env -C lib nimble run
 
       - name: Run test suite
         run: just test

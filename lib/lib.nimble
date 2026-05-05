@@ -21,7 +21,7 @@ template pylib(x, ver) =
            else: pylibPre & x
 
 pylib "pyformats", " ^= 0.1.0"
-pylib "wasm_minimal_protocol", " ^= 0.1.1"
+pylib "wasm_minimal_protocol", " ^= 0.1.3"
 
 from std/os import `/`
 task buildTypst, "build typst plugin":

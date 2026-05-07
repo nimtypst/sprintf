@@ -21,22 +21,6 @@ Another example:
   <img src="./thumbnail-light.svg" alt="demo showing usage of %06d, %.2f, etc">
 </picture>
 
-### Installation
-
-A step by step guide that will tell you how to get the development environment up and running.
-
-
-Firstly, please install [Nim](https://nim-lang.org/install.html).
-
-Then, compile plugin via:
-
-```shell
-$ cd lib
-$ nimble run
-$ cd ..
-```
-
-Afterward, entrypoint `src/lib.typ` along with its dependency `src/lib.wasm` shall be generated.
 
 ## Usage
 
@@ -57,3 +41,23 @@ Just use as if using Python's `%` of `str`
   https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
 * This package also exposes `sprintf-map`, which formats strings using a mapping of names to values.
   Example: `sprintf-map("name=%(name)s", (name: "Alice"))`
+
+
+### Development
+> This section is for developers or advanced users only
+
+To build this package locally,
+there is the guide to show how to get the development environment up and running.
+
+Firstly, install [Nim](https://nim-lang.org/install.html).
+
+Then, compile plugin via:
+
+```shell
+$ cd lib
+$ nimble run
+$ cd ..
+```
+
+Afterward, entrypoint `src/lib.typ` along with its dependency `src/lib.wasm` shall be generated.
+

@@ -1,5 +1,5 @@
 # The `sprintf-package` Package
-<div align="center">Version 0.1.0</div>
+<div align="center">Version 0.1.1</div>
 
 `%`-style (printf) str format for typst
 
@@ -10,7 +10,7 @@
 Simplest example:
 
 ```typ
-#import "@preview/sprintf:0.1.0": *
+#import "@preview/sprintf:0.1.1": *
 
 #sprintf("%s", "Tom")
 ```
@@ -29,7 +29,7 @@ A more in-depth description of usage:
 Just use as if using Python's `%` of `str`
 
 ```typ
-#import "@preview/sprintf:0.1.0": *
+#import "@preview/sprintf:0.1.1": *
 
 #let s-example = sprintf("%s-%.1f", "asd", 1.23)
 ```

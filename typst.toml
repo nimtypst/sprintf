@@ -2,7 +2,7 @@
 
 [package]
 name = "sprintf"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "src/lib.typ"
 authors = ["litlighilit <https://github.com/litlighilit>"]
 license = "MIT"
